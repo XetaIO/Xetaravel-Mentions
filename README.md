@@ -57,6 +57,10 @@
 > ```php
 > php artisan vendor:publish --provider="Xetaio\Mentions\Providers\MentionServiceProvider"
 > ```
+> Then migrate the database :
+> ```sh
+> php artisan migrate
+> ```
 >
 > #### Configuration
 > ```php
