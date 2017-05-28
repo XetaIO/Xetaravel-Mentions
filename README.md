@@ -6,6 +6,16 @@
 >
 > A package to parse `@mentions` from a text and mention the user with a notification. **By default** it is configured to parse any text type and it will replace any matched `@mention` with a markdown link (`[@Mention](/users/profile/@Mention)`) if the mentionned user exist in the database. It will also send a notification with the Laravel `Notifiable` trait to all mentionned users. (Inspired from the [laravel-mentions](https://github.com/jameslkingsley/laravel-mentions) package.)
 >
+> ## Table of Contents
+> * [Requirement](#requirement)
+> * [Installation](#installation)
+>     * [ServiceProviders](#serviceproviders)
+>     * [Vendor Publish](#vendor-publish)
+>     * [Configuration](#configuration)
+> * [Usage](#usage)
+>     * [Parser configuration](#parser-configuration)
+> * [Contribute](#contribute)
+>
 > ## Requirement
 > ![PHP](https://img.shields.io/badge/PHP->=7.0-brightgreen.svg?style=flat-square)
 >
@@ -101,7 +111,7 @@
 > ```
 > And that's all ! At least with the default configuration. :stuck_out_tongue_closed_eyes:
 >
-> ### Parser configuration
+> #### Parser configuration
 > The `MentionParser` take a second parameter who is a configuration array, **this is the default configuration** :
 > ```php
 > <?php
