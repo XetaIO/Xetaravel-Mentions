@@ -19,7 +19,8 @@ class MentionServiceProvider extends ServiceProvider
 
         // Migrations
         $this->publishes([
-            __DIR__.'/../../database/migrations/2017_05_27_103915_create_mentions_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_mentions_table.php')
+            __DIR__.'/../../database/migrations/create_mentions_table.php.stub' =>
+            database_path('migrations/'.date('Y_m_d_His', time()).'_create_mentions_table.php')
         ], 'migrations');
 
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations/2017_05_27_103915_create_mentions_table.php');

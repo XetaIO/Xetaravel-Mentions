@@ -115,7 +115,7 @@ class MentionParser
      */
     protected function removeNullKeys(array $array): array
     {
-        return array_filter($array, function($key) {
+        return array_filter($array, function ($key) {
             return ($key !== null);
         });
     }

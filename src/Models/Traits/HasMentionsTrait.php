@@ -28,7 +28,7 @@ trait HasMentionsTrait
         $mentions = MentionRepository::get($this);
 
         if ($resolve) {
-            $mentions = $mentions->map(function($mention) {
+            $mentions = $mentions->map(function ($mention) {
                 return $mention->recipient();
             });
         }

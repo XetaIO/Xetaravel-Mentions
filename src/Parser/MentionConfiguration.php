@@ -79,7 +79,7 @@ trait MentionConfiguration
     {
         $this->validateName($name);
 
-        if (array_key_exists($name, $this->config)){
+        if (array_key_exists($name, $this->config)) {
             return $this->config[$name];
         }
 
