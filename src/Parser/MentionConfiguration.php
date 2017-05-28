@@ -21,7 +21,7 @@ trait MentionConfiguration
      */
     public function setConfig(array $config)
     {
-    	$this->config = $config;
+        $this->config = $config;
 
         return $this;
     }
@@ -33,7 +33,7 @@ trait MentionConfiguration
      */
     public function getConfig()
     {
-    	return $this->config;
+        return $this->config;
     }
 
     /**
@@ -47,7 +47,7 @@ trait MentionConfiguration
      */
     protected function validateName($name)
     {
-    	if (!is_string($name) || empty($name)) {
+        if (!is_string($name) || empty($name)) {
             throw new InvalidArgumentException("Option name must be a valid string");
         }
     }
@@ -62,8 +62,8 @@ trait MentionConfiguration
      */
     public function setOption($name, $value)
     {
-    	$this->validateName($name);
-    	$this->config[$name] = $value;
+        $this->validateName($name);
+        $this->config[$name] = $value;
 
         return $this;
     }
@@ -77,13 +77,13 @@ trait MentionConfiguration
      */
     public function getOption($name)
     {
-    	$this->validateName($name);
+        $this->validateName($name);
 
         if (array_key_exists($name, $this->config)){
-    		return $this->config[$name];
+            return $this->config[$name];
         }
 
-    	return null;
+        return null;
     }
 
     /**
@@ -95,7 +95,7 @@ trait MentionConfiguration
      */
     public function hasOption($name)
     {
-    	return array_key_exists($name, $this->config);
+        return array_key_exists($name, $this->config);
     }
 
     /**
@@ -108,7 +108,7 @@ trait MentionConfiguration
      */
     public function mergeConfig(array $values, $invert = false)
     {
-    	$this->config = ($invert) ? array_merge($values, $this->config) : array_merge($this->config, $values);
+        $this->config = ($invert) ? array_merge($values, $this->config) : array_merge($this->config, $values);
 
         return $this;
     }
