@@ -14,6 +14,8 @@
 >     * [Configuration](#configuration)
 > * [Usage](#usage)
 >     * [Parser configuration](#parser-configuration)
+>     * [Parser configuration methods](#parser-configuration-methods)
+> * [Custom Parser](#custom-parser)
 > * [Contribute](#contribute)
 >
 > ## Requirement
@@ -115,6 +117,7 @@
 > The `MentionParser` take a second parameter who is a configuration array, **this is the default configuration** :
 > ```php
 > <?php
+>
 > [
 >      // The pool used with the parser.
 >      'pool' => 'users',
@@ -156,6 +159,7 @@
 > The configuration is merged with the default configuration, so you can set only the options that you want to modify. Exemple :
 > ```php
 > <?php
+>
 > $parser = new MentionParser($comment, [
 >     'pool' => 'members',
 >     'notify' => false
@@ -164,6 +168,7 @@
 > You also set a configuration at the runtime :
 > ```php
 > <?php
+>
 > $parser = new MentionParser($comment);
 > $parser->setOption('notify', false);
 > $content = $parser->parse($comment->content);
@@ -171,10 +176,11 @@
 > Or even get a configuration option value :
 > ```php
 > <?php
+>
 > $value = $parser->getOption('notify');
 > // false
 > ```
-> Configuration available methods :
+> #### Parser configuration methods :
 >
 > |Function Name|Description|
 > | --- | --- |
@@ -184,6 +190,42 @@
 > |`getOption(string $name)`|Get a configuration value.|
 > |`hasOption(string $name)`|Determines if current instance has the given option.|
 > |`mergeConfig(array $values, bool $invert = false)`|Merges configuration values with the new ones. If the `$invert` param is set to `true` it will merge the default configuration **into** the `$values`.|
+>
+>
+> ## Custom Parser
+> If you want more flexibility for the Parser, the best way is to create a new Parser and overwrite the methods that you want to modify. For an example, let's create a new Parser that will return a HTML link instead of a Markdown link :
+> ```php
+> <?php
+> namespace App\Parser;
+>
+> use Illuminate\Support\Str;
+> use Xetaio\Mentions\Parser\MentionParser;
+>
+> class CustomParser extends MentionParser
+> {
+>
+>     protected function replace(array $match): string
+>     {
+>         $character = $this->getOption('character');
+>         $mention = Str::title(str_replace($character, '', trim($match[0])));
+>
+>         $route = config('mentions.pools.' . $this->getOption('pool') . '.route');
+>
+>         $link = $route . $mention;
+>
+>         // Here we return a HTML link instead of the default Markdown.
+>         return " <a class=\"link\" href=\"{$link} \">{$character}{$mention}</a>";
+>     }
+> }
+> ```
+> To use it :
+> ```php
+> <?php
+>
+> $parser = new \App\Parser\CustomParser($comment);
+> $content = $parser->parse($comment->content);
+> ```
+> You can of course overwrite all Parser's methods if you need to.
 >
 > ## Contribute
 > If you want to contribute to the project by adding new features or just fix a bug, feel free to do a PR.

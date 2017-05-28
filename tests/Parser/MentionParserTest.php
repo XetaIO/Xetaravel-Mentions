@@ -4,6 +4,7 @@ namespace Test\Parser;
 use Tests\TestCase;
 use Tests\vendor\Models\Article;
 use Tests\vendor\Models\User;
+use Tests\vendor\Parser\CustomParser;
 use Xetaio\Mentions\Parser\MentionParser;
 
 class MentionParserTest extends TestCase
@@ -127,5 +128,20 @@ class MentionParserTest extends TestCase
 
         $mentions = $this->article->mentions();
         $this->assertSame(1, $mentions->count());
+    }
+
+    /**
+     * testCustomParser method
+     *
+     * @return void
+     */
+    public function testCustomParser()
+    {
+        $input = 'Lorem ipsu @admin crepu @member.';
+        $output = 'Lorem ipsu <a class="link" href="/users/show/@Admin">@Admin</a> crepu <a class="link" href="/users/show/@Member">@Member</a>.';
+
+        $parser = new CustomParser($this->article);
+        $result = $parser->parse($input);
+        $this->assertSame($output, $result);
     }
 }

@@ -74,6 +74,13 @@ class MentionParser
         return $output;
     }
 
+    /**
+     * Replace the mention with a markdown link.
+     *
+     * @param array $match The mention to replace.
+     *
+     * @return string
+     */
     protected function replace(array $match): string
     {
         $character = $this->getOption('character');
