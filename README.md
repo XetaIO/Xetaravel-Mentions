@@ -185,7 +185,7 @@
 >     'notify' => false
 > ]);
 > ```
-> You also set a configuration at the runtime :
+> You can also set a configuration at the runtime :
 > ```php
 > <?php
 >
@@ -302,10 +302,10 @@
 >         $username = $this->model->user->username;
 >         $modelId = $this->model->getKey();
 >
->         $message = "<strong>@{$username}</strong> has mentionned your name in his comment !";
+>         $message = "<strong>@{ $username }</strong> has mentionned your name in his comment !";
 >
 >         // You could (and probably should) use a route name here with the function `route()`.
->         $link = "/comment/show/{$modelId}";
+>         $link = "/comment/show/{ $modelId }";
 >
 >         return [
 >             'message' => $message,
