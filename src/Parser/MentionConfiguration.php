@@ -6,7 +6,7 @@ use InvalidArgumentException;
 trait MentionConfiguration
 {
     /**
-     * Configuration values
+     * Configuration options.
      *
      * @var array
      */
@@ -17,7 +17,7 @@ trait MentionConfiguration
      *
      * @param array $config
      *
-     * @return \Xetaio\Mentions\Parser\MentionConfiguration
+     * @return \Xetaio\Mentions\Parser\MentionParser
      */
     public function setConfig(array $config)
     {
@@ -31,15 +31,15 @@ trait MentionConfiguration
      *
      * @return array
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return $this->config;
     }
 
     /**
-     * Validates an option name
+     * Validates an option name.
      *
-     * @param string $name
+     * @param string $name The option name to validate.
      *
      * @throws \InvalidArgumentException
      *
@@ -53,12 +53,12 @@ trait MentionConfiguration
     }
 
     /**
-     * Declares a non-transient configuration value
+     * Set a configuration value with the option name.
      *
-     * @param string $name
-     * @param mixed $value
+     * @param string $name The name of the option.
+     * @param mixed $value The value of the option.
      *
-     * @return \Xetaio\Mentions\Parser\MentionConfiguration
+     * @return \Xetaio\Mentions\Parser\MentionParser
      */
     public function setOption(string $name, $value)
     {
@@ -69,9 +69,9 @@ trait MentionConfiguration
     }
 
     /**
-     * Get a configuration value.
+     * Get a configuration value by the option name.
      *
-     * @param string $name
+     * @param string $name The name of the option.
      *
      * @return mixed
      */
@@ -87,13 +87,13 @@ trait MentionConfiguration
     }
 
     /**
-     * Determines if current instance has the given option
+     * Determines if current instance has the given option.
      *
      * @param string $name
      *
      * @return bool
      */
-    public function hasOption(string $name)
+    public function hasOption(string $name): bool
     {
         return array_key_exists($name, $this->config);
     }
@@ -101,10 +101,10 @@ trait MentionConfiguration
     /**
      * Merges configuration values with the new ones.
      *
-     * @param array $values
-     * @param boolean $invert
+     * @param array $values The configuration options to merge.
+     * @param boolean $invert Invert the merge order.
      *
-     * @return \Xetaio\Mentions\Parser\MentionConfiguration
+     * @return \Xetaio\Mentions\Parser\MentionParser
      */
     public function mergeConfig(array $values, bool $invert = false)
     {

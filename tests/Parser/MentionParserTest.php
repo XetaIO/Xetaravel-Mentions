@@ -47,11 +47,8 @@ class MentionParserTest extends TestCase
      */
     public function testParse()
     {
-        $user = User::find(1);
-        $this->be($user);
-
-        $input = 'Lorem ipsu @admin crepu @member.';
-        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member).';
+        $input = 'Lorem ipsu @admin crepu @member .';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) .';
 
         $result = $this->parser->parse($input);
         $this->assertSame($output, $result);
@@ -68,14 +65,28 @@ class MentionParserTest extends TestCase
     }
 
     /**
+     * testParseWithLargestMentions method
+     *
+     * @return void
+     */
+    public function testParseWithLargestMentions()
+    {
+        $input = 'Lorem ipsu @admin crepu @admin2 rhoncus id velit @adm sit amet @administrator .';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu @admin2 rhoncus id velit @adm sit amet @administrator .';
+
+        $result = $this->parser->parse($input);
+        $this->assertSame($output, $result);
+    }
+
+    /**
      * testParseWithoutMention method
      *
      * @return void
      */
     public function testParseWithoutMention()
     {
-        $input = 'Lorem ipsu @admin.';
-        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin).';
+        $input = 'Lorem ipsu @admin .';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) .';
 
         $this->parser->setOption('mention', false);
         $result = $this->parser->parse($input);
@@ -89,8 +100,8 @@ class MentionParserTest extends TestCase
      */
     public function testParseWithFakeMentionsAndWithoutMentions()
     {
-        $input = 'Lorem ipsu @admin crepu @thisuserdoesntexist but this one @member yes. Also this blabla@admin is a non-normalmention.';
-        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu @thisuserdoesntexist but this one [@Member](/users/profile/@Member) yes. Also this blabla@admin is a non-normalmention.';
+        $input = 'Lorem ipsu @admin crepu @thisuserdoesntexist but this one @member yes. Also this blabla@admin is a non-normal mention.';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu @thisuserdoesntexist but this one [@Member](/users/profile/@Member) yes. Also this blabla@admin is a non-normal mention.';
 
         $this->parser->setOption('mention', false);
         $result = $this->parser->parse($input);
@@ -104,8 +115,8 @@ class MentionParserTest extends TestCase
      */
     public function testParseWithMentionWithoutNotifyWithoutDuplicate()
     {
-        $input = 'Lorem ipsu @admin quis nostrud @nope exerci tation ullamcorper @member.';
-        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) quis nostrud @nope exerci tation ullamcorper [@Member](/users/profile/@Member).';
+        $input = 'Lorem ipsu @admin quis nostrud @nope exerci tation ullamcorper @member .';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) quis nostrud @nope exerci tation ullamcorper [@Member](/users/profile/@Member) .';
 
         $this->parser
             ->setOption('mention', true)
@@ -120,8 +131,8 @@ class MentionParserTest extends TestCase
         $this->assertFalse($mentions->contains('username', 'Admin'));
         $this->assertFalse($mentions->contains('username', 'Nope'));
 
-        $input = 'Lorem ipsu @member quis nostrud @nope exerci tation ullamcorper @admin.';
-        $output = 'Lorem ipsu [@Member](/users/profile/@Member) quis nostrud @nope exerci tation ullamcorper [@Admin](/users/profile/@Admin).';
+        $input = 'Lorem ipsu @member quis nostrud @nope exerci tation ullamcorper @admin .';
+        $output = 'Lorem ipsu [@Member](/users/profile/@Member) quis nostrud @nope exerci tation ullamcorper [@Admin](/users/profile/@Admin) .';
 
         $result = $this->parser->parse($input);
         $this->assertSame($output, $result);
@@ -137,8 +148,8 @@ class MentionParserTest extends TestCase
      */
     public function testCustomParser()
     {
-        $input = 'Lorem ipsu @admin crepu @member.';
-        $output = 'Lorem ipsu <a class="link" href="/users/show/@Admin">@Admin</a> crepu <a class="link" href="/users/show/@Member">@Member</a>.';
+        $input = 'Lorem ipsu @admin crepu @member .';
+        $output = 'Lorem ipsu <a class="link" href="/users/show/@Admin">@Admin</a> crepu <a class="link" href="/users/show/@Member">@Member</a> .';
 
         $parser = new CustomParser($this->article);
         $result = $parser->parse($input);
