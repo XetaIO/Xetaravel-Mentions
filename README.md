@@ -30,6 +30,7 @@
 >     * [Parser configuration](#parser-configuration)
 >     * [Parser configuration methods](#parser-configuration-methods)
 > * [Custom Parser](#custom-parser)
+> * [Notification](#notification)
 > * [Contribute](#contribute)
 >
 > ## Requirement
@@ -240,6 +241,9 @@
 > $content = $parser->parse($comment->content);
 > ```
 > You can of course overwrite all Parser's methods if you need to.
+>
+> ## Notification
+> You will need to write your own Notififation class, but since I'm cool with you, [you can find an example here](https://github.com/XetaIO/Xetaravel-Mentions/blob/master/tests/vendor/Notifications/MentionNotification.php) using the `database` notifications.
 >
 > ## Contribute
 > If you want to contribute to the project by adding new features or just fix a bug, feel free to do a PR.

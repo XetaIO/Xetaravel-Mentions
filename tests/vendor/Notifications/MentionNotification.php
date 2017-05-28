@@ -46,10 +46,13 @@ class MentionNotification extends Notification
      */
     public function toDatabase($notifiable): array
     {
+        // The instance `$this->model` represent the `Article` model.
         $username = $this->model->user->username;
         $modelId = $this->model->getKey();
         
         $message = "<strong>@{$username}</strong> has mentionned your name in his article !";
+        
+        // You could (and probably should) use a route name here with the function `route()`.
         $link = "/articles/show/{$modelId}";
 
         return [
