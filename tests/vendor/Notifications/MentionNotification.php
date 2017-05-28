@@ -9,7 +9,7 @@ class MentionNotification extends Notification
     use Queueable;
 
     /**
-     * The badge instance.
+     * The Comment instance.
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
