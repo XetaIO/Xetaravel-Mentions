@@ -49,10 +49,6 @@ class Mention extends Model
 
         $notificationClass = class_exists($pool->notification) ? $pool->notification : $this->mentionNotification;
 
-        if (method_exists($model, 'getMentionNotification')) {
-            $notificationClass = $model->getMentionNotification();
-        }
-
         if (class_exists($notificationClass)) {
             $recipient->notify(new $notificationClass($model));
         }
