@@ -16,6 +16,6 @@ class CustomParser extends MentionParser
 
         $link = $route . $mention;
 
-        return " <a class=\"link\" href=\"{$link}\">{$character}{$mention}</a> ";
+        return " <a class=\"link\" href=\"{$link}\">{$character}{$mention}</a>";
     }
 }

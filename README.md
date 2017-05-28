@@ -12,13 +12,14 @@
 >
 > **Input** text :
 > ```md
->   Lorem ipsu @admin crepu @member .
+>   Lorem ipsu @admin crepu @Member quis nostrud @UserDoesNotExist ullamcorper fail@mention nostrud @admin.
 > ```
 > **Output** text :
 > ```md
-> Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) .
+> Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) quis nostrud
+> @UserDoesNotExist ullamcorper fail@mention nostrud [@Admin](/users/profile/@Admin).
 > ```
-> **And** both users will also be notified.
+> **And** Both `Admin` and `Member` users will be notified. **But** `Admin` will be notified only **one** time. (Yes the Parser include an anti-spam rule.)
 >
 > ## Table of Contents
 > * [Requirement](#requirement)
@@ -247,7 +248,73 @@
 > You can of course overwrite all Parser's methods if you need to.
 >
 > ## Notification
-> You will need to write your own Notififation class, but since I'm cool with you, [you can find an example here](https://github.com/XetaIO/Xetaravel-Mentions/blob/master/tests/vendor/Notifications/MentionNotification.php) using the `database` notifications.
+> You will need to write your own Notififation class, but I'm cool with you, you can find an example here using the delivery channel `database` :
+> ```php
+> <?php
+> namespace App\Notifications;
+>
+> use Illuminate\Bus\Queueable;
+> use Illuminate\Notifications\Notification;
+>
+> class MentionNotification extends Notification
+> {
+>     use Queueable;
+>
+>     /**
+>      * The Comment instance.
+>      *
+>      * @var \Illuminate\Database\Eloquent\Model
+>      */
+>     public $model;
+>
+>     /**
+>      * Create a new notification instance.
+>      *
+>      * @param \Illuminate\Database\Eloquent\Model $model
+>      */
+>     public function __construct($model)
+>     {
+>         $this->model = $model;
+>     }
+>
+>     /**
+>      * Get the notification's delivery channels.
+>      *
+>      * @param mixed $notifiable
+>      *
+>      * @return array
+>      */
+>     public function via($notifiable): array
+>     {
+>         return ['database'];
+>     }
+>
+>     /**
+>      * Get the array representation of the notification.
+>      *
+>      * @param mixed $notifiable
+>      *
+>      * @return array
+>      */
+>     public function toDatabase($notifiable): array
+>     {
+>         // The instance `$this->model` represent the `Comment` model.
+>         $username = $this->model->user->username;
+>         $modelId = $this->model->getKey();
+>
+>         $message = "<strong>@{$username}</strong> has mentionned your name in his comment !";
+>
+>         // You could (and probably should) use a route name here with the function `route()`.
+>         $link = "/comment/show/{$modelId}";
+>
+>         return [
+>             'message' => $message,
+>             'link' => $link,
+>             'type' => 'mention'
+>         ];
+>     }
+> }
+> ```
 >
 > ## Contribute
-> If you want to contribute to the project by adding new features or just fix a bug, feel free to do a PR.
+> If you want to contribute, please [follow this guide](https://github.com/XetaIO/Xetaravel-Mentions/blob/master/.github/CONTRIBUTING.md).

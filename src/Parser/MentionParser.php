@@ -27,7 +27,7 @@ class MentionParser
         'mention' => true,
         'notify' => true,
         'character' => '@',
-        'regex' => '/\s({character}{pattern}{rules})\s{1}/',
+        'regex' => '/\s({character}{pattern}{rules})/',
         'regex_replacement' => [
             '{character}' => '@',
             '{pattern}' => '[A-Za-z0-9]',
@@ -90,7 +90,7 @@ class MentionParser
 
         $link = $route . $mention;
 
-        return " [{$character}{$mention}]($link) ";
+        return " [{$character}{$mention}]($link)";
     }
 
     /**
@@ -152,6 +152,6 @@ class MentionParser
             $this->model->mention($mentionned, $this->getOption('notify'));
         }
 
-        return '/' . preg_quote($key) . '/';
+        return '/' . preg_quote($key) . '(?!\w)/';
     }
 }
