@@ -1,6 +1,6 @@
 {
     "name": "xetaio/xetaravel-mentions",
-    "description": "A package to parse mentions from a text and mention the users with Laravel.",
+    "description": "A package to parse a @mention from a text and mention the user with a notification.",
     "keywords": [
         "laravel",
         "laravel-5-package",
