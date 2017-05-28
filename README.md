@@ -19,7 +19,7 @@
 > Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) quis nostrud
 > @UserDoesNotExist ullamcorper fail@mention nostrud [@Admin](/users/profile/@Admin).
 > ```
-> **And** Both `Admin` and `Editor` users will be notified. **But** `Admin` will be notified only **one** time. (Yes the Parser include an anti-spam rule.)
+> **And** Both `Admin` and `Member` users will be notified. **But** `Admin` will be notified only **one** time. (Yes the Parser include an anti-spam rule.)
 >
 > ## Table of Contents
 > * [Requirement](#requirement)
