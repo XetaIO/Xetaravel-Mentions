@@ -12,14 +12,14 @@
 >
 > **Input** text :
 > ```md
->   Lorem ipsu @admin crepu @Member quis nostrud @UserDoesNotExist ullamcorper failmention@admin.
+>   Lorem ipsu @admin crepu @Member quis nostrud @UserDoesNotExist ullamcorper fail@mention nostrud @admin.
 > ```
 > **Output** text :
 > ```md
 > Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) quis nostrud
-> @UserDoesNotExist ullamcorper failmention@admin.
+> @UserDoesNotExist ullamcorper fail@mention nostrud [@Admin](/users/profile/@Admin).
 > ```
-> **And** both users will also be notified.
+> **And** Both `Admin` and `Editor` users will be notified. **But** `Admin` will be notified only **one** time. (Yes the Parser include an anti-spam rule.)
 >
 > ## Table of Contents
 > * [Requirement](#requirement)
