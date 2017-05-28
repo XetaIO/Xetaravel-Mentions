@@ -12,11 +12,11 @@
 >
 > **Input** text :
 > ```md
->   Lorem ipsu @admin crepu @member.
+>   Lorem ipsu @admin crepu @member .
 > ```
 > **Output** text :
 > ```md
-> Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member).
+> Lorem ipsu [@Admin](/users/profile/@Admin) crepu [@Member](/users/profile/@Member) .
 > ```
 > **And** both users will also be notified.
 >
