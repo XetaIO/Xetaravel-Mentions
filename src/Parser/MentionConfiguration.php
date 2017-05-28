@@ -13,7 +13,7 @@ trait MentionConfiguration
     protected $config = [];
 
     /**
-     * Sets an instance configuration array
+     * Sets a configuration array.
      *
      * @param array $config
      *
@@ -27,7 +27,7 @@ trait MentionConfiguration
     }
 
     /**
-     * Obtains instance configuration array
+     * Get all the configuration options.
      *
      * @return array
      */
@@ -60,7 +60,7 @@ trait MentionConfiguration
      *
      * @return \Xetaio\Mentions\Parser\MentionConfiguration
      */
-    public function setOption($name, $value)
+    public function setOption(string $name, $value)
     {
         $this->validateName($name);
         $this->config[$name] = $value;
@@ -69,13 +69,13 @@ trait MentionConfiguration
     }
 
     /**
-     * Obtains a configuration value
+     * Get a configuration value.
      *
      * @param string $name
      *
      * @return mixed
      */
-    public function getOption($name)
+    public function getOption(string $name)
     {
         $this->validateName($name);
 
@@ -93,7 +93,7 @@ trait MentionConfiguration
      *
      * @return bool
      */
-    public function hasOption($name)
+    public function hasOption(string $name)
     {
         return array_key_exists($name, $this->config);
     }
@@ -106,7 +106,7 @@ trait MentionConfiguration
      *
      * @return \Xetaio\Mentions\Parser\MentionConfiguration
      */
-    public function mergeConfig(array $values, $invert = false)
+    public function mergeConfig(array $values, bool $invert = false)
     {
         $this->config = ($invert) ? array_merge($values, $this->config) : array_merge($this->config, $values);
 
