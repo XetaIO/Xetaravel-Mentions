@@ -4,12 +4,10 @@ namespace Xetaio\Mentions\Parser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Xetaio\Mentions\Parser\MentionConfiguration;
+use Xety\Configurator\Configurator;
 
-class MentionParser
+class MentionParser extends Configurator
 {
-    use MentionConfiguration;
-
     /**
      * The model used to mention the user.
      *
