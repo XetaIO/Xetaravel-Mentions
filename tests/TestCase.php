@@ -13,10 +13,8 @@ abstract class TestCase extends Orchestra
 
         $this->setupDatabase();
 
-        $this->artisan('migrate', [
-            '--database' => 'testing',
-            '--realpath' => realpath(__DIR__.'/vendor/migrations')
-        ]);
+        $this->artisan('migrate', ['--database' => 'testing']);
+        $this->loadMigrationsFrom(__DIR__ . '/vendor/migrations');
 
         config([
             'mentions.pools.users' => [
