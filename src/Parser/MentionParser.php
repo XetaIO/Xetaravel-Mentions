@@ -51,12 +51,15 @@ class MentionParser extends Configurator
      * Parse a text and determine if it contains mentions. If it does,
      * then we transform the mentions to a markdown link and we notify the user.
      *
-     * @param string $input The string to parse.
+     * @param null|string $input The string to parse.
      *
-     * @return string
+     * @return null|string
      */
-    public function parse(string $input): string
+    public function parse($input)
     {
+        if (is_null($input) || empty($input)) {
+            return $input;
+        }
         $character = $this->getOption('character');
         $regex = strtr($this->getOption('regex'), $this->getOption('regex_replacement'));
 
