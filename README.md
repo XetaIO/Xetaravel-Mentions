@@ -201,6 +201,8 @@
 > // false
 > ```
 > #### Parser configuration methods :
+> The parser use the [Xety/Configurator](https://github.com/Xety/Configurator) package to manage the configuration.
+> Check this repository to get all the methods and their description.
 >
 > |Function Name|Description|
 > | --- | --- |
