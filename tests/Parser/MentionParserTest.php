@@ -65,6 +65,26 @@ class MentionParserTest extends TestCase
     }
 
     /**
+     * testParseWithoutInput method
+     *
+     * @return void
+     */
+    public function testParseWithoutInput()
+    {
+        $input = '';
+        $output = '';
+
+        $result = $this->parser->parse($input);
+        $this->assertSame($output, $result);
+
+        $input = null;
+        $output = null;
+
+        $result = $this->parser->parse($input);
+        $this->assertSame($output, $result);
+    }
+
+    /**
      * testParseWithLargestMentions method
      *
      * @return void
