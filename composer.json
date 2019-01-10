@@ -1,5 +1,5 @@
 {
-    "name": "xetaio/xetaravel-mentions",
+    "name": "ow/xetaravel-mentions",
     "description": "A package to parse a @mention from a text and mention the user with a notification.",
     "keywords": [
         "laravel",
