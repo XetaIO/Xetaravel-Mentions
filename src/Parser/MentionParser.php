@@ -91,7 +91,7 @@ class MentionParser extends Configurator
 
         $link = $route . $mention;
 
-        return " [{$character}{$mention}]($link)";
+        return "[{$character}{$mention}]($link)";
     }
 
     /**
