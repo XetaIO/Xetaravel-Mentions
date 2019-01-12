@@ -29,7 +29,7 @@ class MentionParser extends Configurator
         'regex_replacement' => [
             '{character}' => '@',
             '{pattern}' => '[A-Za-z0-9]',
-            '{rules}' => '{4,20}'
+            '{rules}' => '{1,20}'
         ]
     ];
 
@@ -91,7 +91,7 @@ class MentionParser extends Configurator
 
         $link = $route . $mention;
 
-        return "[{$character}{$mention}]($link)";
+        return " [{$character}{$mention}]($link)";
     }
 
     /**
