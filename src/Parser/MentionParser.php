@@ -25,11 +25,11 @@ class MentionParser extends Configurator
         'mention' => true,
         'notify' => true,
         'character' => '@',
-        'regex' => '/\s({character}{pattern}{rules})/',
+        'regex' => '/({character}{pattern}{rules})/',
         'regex_replacement' => [
             '{character}' => '@',
             '{pattern}' => '[A-Za-z0-9]',
-            '{rules}' => '{1,20}'
+            '{rules}' => '{4,20}'
         ]
     ];
 
