@@ -35,7 +35,7 @@
 > * [Contribute](#contribute)
 >
 > ## Requirement
-> ![PHP](https://img.shields.io/badge/PHP->=7.1-brightgreen.svg?style=flat-square)
+> ![PHP](https://img.shields.io/badge/PHP->=7.2.5-brightgreen.svg?style=flat-square)
 >
 > ## Installation
 >
