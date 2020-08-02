@@ -24,7 +24,8 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "laravel/framework": "^7.0",
+        "illuminate/support": "^7.0",
+        "illuminate/database": "^7.0",
         "xety/configurator": "^1.0"
     },
     "require-dev": {
