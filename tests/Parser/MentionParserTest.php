@@ -99,6 +99,21 @@ class MentionParserTest extends TestCase
     }
 
     /**
+     * testParseWithMentionsAtStart method
+     *
+     * @return void
+     */
+    public function testParseWithMentionsAtStart()
+    {
+        $input = '@Admin crepu rhoncus id velit @adm sit amet @administrator.';
+        $output = '[@Admin](/users/profile/@Admin) crepu rhoncus id velit @adm sit amet @administrator.';
+
+        $this->parser->setOption('regex', '/({character}{pattern}{rules})/');
+        $result = $this->parser->parse($input);
+        $this->assertSame($output, $result);
+    }
+
+    /**
      * testParseWithoutMention method
      *
      * @return void
@@ -121,7 +136,7 @@ class MentionParserTest extends TestCase
     public function testParseWithFakeMentionsAndWithoutMentions()
     {
         $input = 'Lorem ipsu @admin crepu @thisuserdoesntexist but this one @member yes. Also this blabla@admin is a non-normal mention.';
-        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu @thisuserdoesntexist but this one [@Member](/users/profile/@Member) yes. Also this blabla@admin is a non-normal mention.';
+        $output = 'Lorem ipsu [@Admin](/users/profile/@Admin) crepu @thisuserdoesntexist but this one [@Member](/users/profile/@Member) yes. Also this blabla[@Admin](/users/profile/@Admin) is a non-normal mention.';
 
         $this->parser->setOption('mention', false);
         $result = $this->parser->parse($input);
