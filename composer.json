@@ -23,15 +23,14 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5",
-        "illuminate/support": "^7.0",
-        "illuminate/database": "^7.0",
+        "php": "^8.0",
+        "illuminate/support": "^9.0",
+        "illuminate/database": "^9.0",
         "xety/configurator": "^1.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0",
-        "orchestra/database": "^5.0",
-        "phpunit/phpunit": "^8.5",
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "^3.0"
     },
     "autoload": {

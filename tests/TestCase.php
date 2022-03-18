@@ -1,12 +1,14 @@
 <?php
 namespace Tests;
 
-use Orchestra\Database\ConsoleServiceProvider;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Xetaio\Mentions\Providers\MentionServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -34,8 +36,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            MentionServiceProvider::class,
-            ConsoleServiceProvider::class
+            MentionServiceProvider::class
         ];
     }
 
@@ -58,7 +59,7 @@ abstract class TestCase extends Orchestra
         $databasePath = __DIR__.'/vendor/temp/database.sqlite';
 
         if (file_exists($databasePath)) {
-            unlink($databasePath);
+            @unlink($databasePath);
         }
 
         if (!file_exists($databasePath)) {
