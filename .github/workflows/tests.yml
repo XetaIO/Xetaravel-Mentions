@@ -6,6 +6,7 @@ on:
 
 jobs:
   PHPUnit:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         php:
