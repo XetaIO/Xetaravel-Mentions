@@ -33,12 +33,15 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Directory Permissions
-      run: chmod -R 777 tests/vendor/temp
+      run: chmod -R 775 tests/vendor/temp
 
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch tests/vendor/temp/database.sqlite
+    #- name: Create Database
+    #  run: |
+    #    mkdir -p database
+    #   touch tests/vendor/temp/database.sqlite
+
+    - name: Directory Permissions
+      run: chmod 775 tests/vendor/temp/database.sqlite
 
     - name: Run tests
       run: vendor/bin/phpunit
