@@ -57,13 +57,6 @@ abstract class TestCase extends Orchestra
     protected function setupDatabase()
     {
         $databasePath = __DIR__.'/vendor/temp/database.sqlite';
-
-        if (file_exists($databasePath)) {
-            @unlink($databasePath);
-        }
-
-        if (!file_exists($databasePath)) {
-            file_put_contents($databasePath, '');
-        }
+        file_put_contents($databasePath, '');
     }
 }
