@@ -59,7 +59,7 @@ abstract class TestCase extends Orchestra
         $databasePath = __DIR__.'/vendor/temp/database.sqlite';
 
         if (file_exists($databasePath)) {
-            @unlink($databasePath);
+            //@unlink($databasePath);
         }
 
         if (!file_exists($databasePath)) {
