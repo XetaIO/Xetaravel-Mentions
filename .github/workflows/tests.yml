@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Unit Tests
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate composer.json and composer.lock
+    - name: Validate composer.json
       run: composer validate --strict
 
     - name: Cache Composer packages
@@ -36,6 +36,9 @@ jobs:
       run: |
         mkdir -p database
         touch tests/vendor/temp/database.sqlite
+
+    - name: Directory Permissions
+      run: chmod -R 777 tests/vendor/temp/cache
 
     - name: Run tests
       run: vendor/bin/phpunit
