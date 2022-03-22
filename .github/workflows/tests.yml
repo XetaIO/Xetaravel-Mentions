@@ -38,7 +38,7 @@ jobs:
         touch tests/vendor/temp/database.sqlite
 
     - name: Directory Permissions
-      run: chmod -R 777 tests/vendor/temp/cache
+      run: chmod -R 777 tests/vendor/temp
 
     - name: Run tests
       run: vendor/bin/phpunit
