@@ -2,12 +2,12 @@
 >
 > |Unit Tests|Coverage|Stable Version|Downloads|Laravel|License|
 > |:-------:|:------:|:-------:|:------:|:-------:|:-------:|
-> |[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/XetaIO/Xetaravel-Mentions/Unit%20Tests?style=flat-square)](https://github.com/XetaIO/Xetaravel-Mentions/actions/workflows/tests.yml)|[![Coverage Status](https://img.shields.io/coveralls/XetaIO/Xetaravel-Mentions/master.svg?style=flat-square)](https://coveralls.io/r/XetaIO/Xetaravel-Mentions)|[![Latest Stable Version](https://img.shields.io/packagist/v/XetaIO/Xetaravel-Mentions.svg?style=flat-square)](https://packagist.org/packages/xetaio/xetaravel-mentions)|[![Total Downloads](https://img.shields.io/packagist/dt/xetaio/xetaravel-mentions.svg?style=flat-square)](https://packagist.org/packages/xetaio/xetaravel-mentions)|[![Laravel 8.0](https://img.shields.io/badge/Laravel->=8.0-f4645f.svg?style=flat-square)](http://laravel.com)|[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/XetaIO/Xetaravel-Mentions/blob/master/LICENSE)|
+> |[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/XetaIO/Xetaravel-Mentions/Unit%20Tests?style=flat-square)](https://github.com/XetaIO/Xetaravel-Mentions/actions/workflows/tests.yml)|[![Coverage Status](https://img.shields.io/codecov/c/github/XetaIO/Xetaravel-Mentions?style=flat-square)](https://app.codecov.io/gh/XetaIO/Xetaravel-Mentions)|[![Latest Stable Version](https://img.shields.io/packagist/v/XetaIO/Xetaravel-Mentions.svg?style=flat-square)](https://packagist.org/packages/xetaio/xetaravel-mentions)|[![Total Downloads](https://img.shields.io/packagist/dt/xetaio/xetaravel-mentions.svg?style=flat-square)](https://packagist.org/packages/xetaio/xetaravel-mentions)|[![Laravel 8.0](https://img.shields.io/badge/Laravel->=8.0-f4645f.svg?style=flat-square)](http://laravel.com)|[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/XetaIO/Xetaravel-Mentions/blob/master/LICENSE)|
 >
 > A package to parse `@mentions` from a text and mention the user with a notification.
 >
 > **By default** this package is configured to parse any text type and it will replace any matched `@mention` with a markdown link (`[@Mention](/users/profile/@Mention)`) if the mentionned user exist in the database. It will also send a notification with the Laravel `Notifiable` trait to all mentionned users. (Inspired from the [laravel-mentions](https://github.com/jameslkingsley/laravel-mentions) package.)
->
+>![Codecov](https://img.shields.io/codecov/c/github/XetaIO/Xetaravel-Mentions?style=flat-square)
 > Quick example :
 >
 > **Input** text :
