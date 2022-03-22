@@ -10,6 +10,10 @@
          stopOnFailure="false"
          verbose="true"
         >
+    <php>
+        <ini name="xdebug.mode" value="coverage" />
+        <env name="XDEBUG_MODE" value="coverage" />
+    </php>
     <testsuites>
         <testsuite name="Xetaravel Mentions Test Suite">
             <directory suffix=".php">./tests/</directory>
