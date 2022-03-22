@@ -36,9 +36,7 @@ jobs:
       run: chmod -R 775 tests/vendor/temp
 
     - name: Create Database
-      run: |
-        mkdir -p database
-       touch tests/vendor/temp/database.sqlite
+      run: touch tests/vendor/temp/database.sqlite
 
     - name: Directory Permissions
       run: chmod 775 tests/vendor/temp/database.sqlite
