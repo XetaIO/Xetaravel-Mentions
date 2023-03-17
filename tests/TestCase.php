@@ -9,7 +9,7 @@ abstract class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -41,22 +41,25 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * @param \Illuminate\Foundation\Application $app
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function defineEnvironment($app)
     {
         $app['config']->set('database.default', 'testing');
 
         $app['config']->set('database.connections.testing', [
             'driver' => 'sqlite',
-            'database' => __DIR__.'/vendor/temp/database.sqlite',
+            'database' => __DIR__ . '/vendor/temp/database.sqlite',
             'prefix' => '',
         ]);
     }
 
     protected function setupDatabase()
     {
-        $databasePath = __DIR__.'/vendor/temp/database.sqlite';
+        $databasePath = __DIR__ . '/vendor/temp/database.sqlite';
         file_put_contents($databasePath, '');
     }
 }
