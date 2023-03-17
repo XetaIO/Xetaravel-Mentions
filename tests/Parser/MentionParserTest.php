@@ -1,5 +1,5 @@
 <?php
-namespace Test\Parser;
+namespace Tests\Parser;
 
 use Tests\TestCase;
 use Tests\vendor\Models\Article;
