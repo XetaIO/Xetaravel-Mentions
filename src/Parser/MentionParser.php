@@ -13,14 +13,14 @@ class MentionParser extends Configurator
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    protected $model;
+    protected Model $model;
 
     /**
      * The default configuration used by the parser.
      *
      * @var array
      */
-    protected $defaultConfig = [
+    protected array $defaultConfig = [
         'pool' => 'users',
         'mention' => true,
         'notify' => true,

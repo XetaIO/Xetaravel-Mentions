@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Xetaio\Mentions\Providers\MentionServiceProvider;
 
-abstract class TestCase extends Orchestra
+class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
